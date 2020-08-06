@@ -25,6 +25,7 @@ header {
 
 .header_h1 {
     padding: 1rem;
+    text-transform: uppercase;
 }
 
 .header_button {
@@ -124,5 +125,22 @@ header {
 .modal-button:hover {
     background: red;
     color: black;
+}
+
+.section_main {
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px 20px;    
+}
+
+.section_main-player {
+    flex: 1 1 40%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;    
 }
 
