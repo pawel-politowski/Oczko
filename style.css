@@ -27,17 +27,37 @@ header {
     padding: 1rem;
 }
 
+.header_button {
+    display: none;
+    cursor: pointer;
+    width: 200px;
+    max-width: 20%;
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    background: black;
+    color: red;
+    transition: all .2s linear;
+}
+
+.header_button:hover {
+    background: red;
+    color: black;
+}
+
 .section_modal {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid black;
+    border: 1px solid red;
     border-radius: 5px;
     z-index: 10;
-    background-color: lightgray;
+    background-color: white;
     width: 800px;
     max-width: 80%;
+    display: block;
 }
 
 .modal-header {
@@ -45,5 +65,64 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid red;
 }
+
+.modal-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-closeBtn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 5px;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-section {
+    padding: 10px 20px;
+} 
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(219, 35, 35, 0.5);
+}
+
+.modal-rules {
+    padding: 10px 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-button {
+    cursor: pointer;
+    width: 100px;
+    max-width: 20%;
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    background: black;
+    color: red;
+    transition: all .2s linear;
+}
+
+.modal-button:hover {
+    background: red;
+    color: black;
+}
+
