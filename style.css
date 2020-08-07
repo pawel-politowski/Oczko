@@ -139,8 +139,13 @@ header {
     flex: 1 1 40%;
     height: 30vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+    align-items: flex-end;
     border: 1px solid black;    
+}
+
+.section_main-img {
+    align-self: flex-start;
+    padding: 10px 20px;
 }
 

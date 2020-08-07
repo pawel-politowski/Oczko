@@ -12,7 +12,7 @@ const playerTwoSection = document.querySelector('.playerTwoSection');
 const playerThreeSection = document.querySelector('.playerThreeSection');
 const playerFourSection = document.querySelector('.playerFourSection');
 const computerSection = document.querySelector('.computerSection');
-let deckID
+const placeForImg = document.querySelector('.section_main-img');
 
 const closeModal = function() {       
     modalSection.style.display = 'none';
@@ -37,21 +37,26 @@ const onePlayer = function() {
     playerTwoSection.style.display = 'none';
     playerThreeSection.style.display = 'none';
     playerFourSection.style.display = 'none';
+    createDeck();  
+    console.log(deck)     
 };
 
 const twoPlayers = function() {
     computerSection.style.display = 'none';
     playerThreeSection.style.display = 'none';
     playerFourSection.style.display = 'none';
+    createDeck();
 };
 
 const threePlayers = function() { 
     computerSection.style.display = 'none';
     playerFourSection.style.display = 'none';
+    createDeck();
 };
 
 const fourPlayers = function() { 
-    computerSection.style.display = 'none';   
+    computerSection.style.display = 'none';  
+    createDeck(); 
 };
 
 closeModalBtns.forEach(button => {
@@ -63,21 +68,63 @@ twoPlayersGame.addEventListener('click', twoPlayers);
 threePlayersGame.addEventListener('click', threePlayers);
 fourPlayersGame.addEventListener('click', fourPlayers);
 
-fetch('https://deckofcardsapi.com/api/deck/new/shuffle/').then(function(response) {
-      if (response.status != 200) {
-        window.alert("Oh dangit");
-        return;
-      }
-      response.json().then(function(data) {
-        let api = data;
-        let deckID = api.deck_id;
-        
-fetch('https://deckofcardsapi.com/api/deck/'+deckID+'/draw/?count=52').then(function(response) {
-            if (response.status != 200) {
-              window.alert("You done messed up");
-              return;
-            }
-            response.json().then(function(data) {
-                let firstDeal = data.cards;})
-        })})
-    })
+
+function createDeck() { 
+            
+    fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+        .then((response) => response.json()
+        .then((data) => {           
+          let api = data;
+          let deckID = api.deck_id;
+          
+    fetch('https://deckofcardsapi.com/api/deck/'+deckID+'/draw/?count=52')
+        .then((response) => response.json()
+        .then((data) => {
+            let deck = data.cards        
+        }))               
+    })) 
+    return deck          
+}
+
+
+
+
+// fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1').then((response) => 
+       
+//         response.json().then((data) => {
+//           let api = data;
+//           let deckID = api.deck_id;
+          
+//             fetch('https://deckofcardsapi.com/api/deck/'+deckID+'/draw/?count=52').then((response) => 
+
+//             response.json().then((data) => {
+//                 let wholeDeck = data.cards            
+//                 let card1P1 = `<img style="width:90px;height:110px;" src="${wholeDeck[0].images.png}" />`;
+//                 let card2P1 = `<img style="width:90px;height:110px;" src="${wholeDeck[1].images.png}" />`;
+//                 placeForImg.innerHTML += card1P1 +=card2P1  
+//                 let hand1             
+                
+                
+//                 for (let i = 0; i < wholeDeck.length; i++) {
+//                     let value = parseInt(wholeDeck[i].value);
+//                     if (wholeDeck[i].value == "JACK"){
+//                     value = 2;
+//                     }
+//                     if (wholeDeck[i].value == "QUEEN"){
+//                         value = 3;
+//                     }
+//                     if (wholeDeck[i].value == "KING"){
+//                         value = 4;
+//                     }
+//                     if  (wholeDeck[i].value == "ACE"){
+//                         value = 11;
+//                     }
+//                     if(i == 0 || i == 1){
+//                     hand1.push(value)
+//                     }           
+//             }          
+//             }))
+//         })
+// )
+
+    
