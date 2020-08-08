@@ -27,12 +27,20 @@ const score2 = document.querySelector('.score-player2');
 const score3 = document.querySelector('.score-player3');
 const score4 = document.querySelector('.score-player4');
 const scoreCp = document.querySelector('.score-cp');
-let gameStart = false;
-let gameOver = false;
+let gameStart1 = false;
+let gameStart2 = false;
+let gameStart3 = false;
+let gameStart4 = false;
+let gameStartCP = false;
+let gameOver1 = false;
+let gameOver2 = false;
+let gameOver3 = false;
+let gameOver4 = false;
 let play1Won = false;
 let play2Won = false;
 let play3Won = false;
 let play4Won = false;
+let gameDraw = false;
 let dealerCards = [];
 let player1Cards = [];
 let player2Cards = [];
@@ -87,8 +95,9 @@ const onePlayer = function() {
     playerThreeSection.style.display = 'none';
     playerFourSection.style.display = 'none';
     getDeckID();
-    gameStarted = true;
-    gameOver = false;
+    gameStart1 = true;
+    gameStartCP = true;
+    gameOver1 = false;
     player1Won = false;
     dealerCards = [getNextCard(), getNextCard()];
     player1Cards = [getNextCard(), getNextCard()];
@@ -106,8 +115,10 @@ const twoPlayers = function() {
     playerThreeSection.style.display = 'none';
     playerFourSection.style.display = 'none';
     getDeckID();
-    gameStarted = true;
-    gameOver = false;
+    gameStart1 = true;
+    gameStart2 = true;
+    gameOver1 = false;
+    gameOver2 = false;    
     player1Won = false;
     player2Won = false;   
     player1Cards = [getNextCard(), getNextCard()];
@@ -118,8 +129,12 @@ const threePlayers = function() {
     computerSection.style.display = 'none';
     playerFourSection.style.display = 'none';
     getDeckID();
-    gameStarted = true;
-    gameOver = false;
+    gameStart1 = true;
+    gameStart2 = true;
+    gameStart3 = true;
+    gameOver1 = false;
+    gameOver2 = false;
+    gameOver3 = false;
     player1Won = false;
     player2Won = false;   
     player3Won = false;
@@ -131,8 +146,13 @@ const threePlayers = function() {
 const fourPlayers = function() { 
     computerSection.style.display = 'none';  
     getDeckID(); 
-    gameStarted = true;
-    gameOver = false;
+    gameStart1 = true;
+    gameStart2 = true;
+    gameStart3 = true;
+    gameStart4 = true;
+    gameOver1 = false;
+    gameOver2 = false;
+    gameOver3 = false;
     player1Won = false;
     player2Won = false;   
     player3Won = false;
@@ -152,10 +172,26 @@ onePlayerGame.addEventListener('click', onePlayer);
 twoPlayersGame.addEventListener('click', twoPlayers);
 threePlayersGame.addEventListener('click', threePlayers);
 fourPlayersGame.addEventListener('click', fourPlayers);
+
 buttonHit1.addEventListener('click', function(){
     player1Cards.push(getNextCard());
-    checkForEndOfGame();
-    showStatus();
+    // checkForEndOfGame();
+    // showStatus();
+})
+buttonHit2.addEventListener('click', function(){
+    player2Cards.push(getNextCard());
+    // checkForEndOfGame();
+    // showStatus();
+})
+buttonHit3.addEventListener('click', function(){
+    player3Cards.push(getNextCard());
+    // checkForEndOfGame();
+    // showStatus();
+})
+buttonHit4.addEventListener('click', function(){
+    player4Cards.push(getNextCard());
+    // checkForEndOfGame();
+    // showStatus();
 })
 
 function getNextCard() {
@@ -189,6 +225,147 @@ function getCardNumericValue(deck){
       case 'KING':
         return 4; 
     }
+  }
+
+  function checkForEndOfGame(){
+    updateScores();
+    
+    if(gameOver1 && gameStart1 && gameStartCP){
+      while(dealerScore<player1Score &&
+            player1Score <=21 &&
+            dealerScore <=21){
+              dealerCards.push(getNextCard());
+              updateScores();
+      }
+    }
+      
+      if(player1Score>21 && gameStart1 && gameStartCP){
+        player1Won=false;
+        gameOver1 = true;
+      }
+      
+      else if(dealerScore>21 && gameStart1 && gameStartCP){
+        player1Won = true;
+        gameOver1 = true;
+      }
+      
+      else if(gameOver1 && gameStart1 && gameStartCP){
+        if(player1Score>dealerScore){
+          player1Won = true;
+        }
+        else{
+          player1Won = false;
+        }
+      }
+      if(player1Score>21 && gameStart1 && gameStart2 && !gameStart3){
+          player1Won = false;
+          gameOver1 = true;
+          player2Won = true;
+          gameOver2 = true;
+      }
+      if(player2Score>21 && gameStart1 && gameStart2 && !gameStart3){
+        player1Won = true;
+        gameOver1 = true;
+        player2Won = false;
+        gameOver2 = true;
+    }
+    if(player1Score<=21 && player2Score<=21 && gameStart1 && gameStart2 && !gameStart3){
+       if(player1Score < player2Score){
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = true;
+        gameOver2 = true;
+       }
+       else {
+           gameDraw = true;
+       }
+    }
+    if(player1Score>21 && player2Score>21 && gameStart1 && gameStart2 && gameStart3 && !gameStart4){
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = false;
+        gameOver2 = true;
+        player3Won = true;
+        gameOver3 = true;
+    }
+    if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score>21 && player3Score>21){
+        player1Won = true;
+        gameOver1 = true;
+        player2Won = false;
+        gameOver2 = true;
+        player3Won = false;
+        gameOver3 = true;
+    }
+    if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score>21 && player2Score<=21 && player3Score>21){
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = true;
+        gameOver2 = true;
+        player3Won = false;
+        gameOver3 = true;
+    }
+    if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score>21 && player2Score>21){
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = false;
+        gameOver2 = true;
+        player3Won = true;
+        gameOver3 = true;
+    }
+    if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score<=21 && player3Score>21){
+        if(player1Score>player2Score){
+        player1Won = true;
+        gameOver1 = true;
+        player2Won = false;
+        gameOver2 = true;
+        player3Won = false;
+        gameOver3 = true;
+        }
+        else if(player1Score<player2Score){
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = true;
+        gameOver2 = true;
+        player3Won = false;
+        gameOver3 = true;
+        }
+        else{
+            gameDraw = true;
+        }
+        if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score>21 && player3Score<=21){
+            if(player1Score>player3Score){
+            player1Won = true;
+            gameOver1 = true;
+            player2Won = false;
+            gameOver2 = true;
+            player3Won = false;
+            gameOver3 = true;
+            }
+            else if(player1Score<player3Score){
+            player1Won = false;
+            gameOver1 = true;
+            player2Won = false;
+            gameOver2 = true;
+            player3Won = true;
+            gameOver3 = true;
+            }
+            else{
+                gameDraw = true;
+            }
+            if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score>21 && player2Score<=21 && player3Score<=21){
+                if(player1Score<player2Score){
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = true;
+                gameOver3 = true;
+                }                
+                else{
+                    gameDraw = true;
+                }                      
+        
+   
   }
 
   
