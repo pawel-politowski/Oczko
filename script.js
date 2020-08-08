@@ -239,10 +239,10 @@ function getCardNumericValue(deck){
       }
     }
       
-      if(player1Score>21 && gameStart1 && gameStartCP){
+    if(player1Score>21 && gameStart1 && gameStartCP){
         player1Won=false;
         gameOver1 = true;
-      }
+    }
       
       else if(dealerScore>21 && gameStart1 && gameStartCP){
         player1Won = true;
@@ -257,13 +257,13 @@ function getCardNumericValue(deck){
           player1Won = false;
         }
       }
-      if(player1Score>21 && gameStart1 && gameStart2 && !gameStart3){
-          player1Won = false;
-          gameOver1 = true;
-          player2Won = true;
-          gameOver2 = true;
+    if(player1Score>21 && gameStart1 && gameStart2 && !gameStart3){
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = true;
+        gameOver2 = true;
       }
-      if(player2Score>21 && gameStart1 && gameStart2 && !gameStart3){
+    if(player2Score>21 && gameStart1 && gameStart2 && !gameStart3){
         player1Won = true;
         gameOver1 = true;
         player2Won = false;
@@ -277,11 +277,11 @@ function getCardNumericValue(deck){
         gameOver2 = true;
        }
        else {
-           gameDraw = true;
-           player1Won = false;
-           gameOver1 = true;
-           player2Won = false;
-           gameOver2 = true;          
+        gameDraw = true;
+        player1Won = false;
+        gameOver1 = true;
+        player2Won = false;
+        gameOver2 = true;          
        }
     }
     if(player1Score>21 && player2Score>21 && gameStart1 && gameStart2 && gameStart3 && !gameStart4){
@@ -318,20 +318,20 @@ function getCardNumericValue(deck){
     }
     if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score<=21 && player3Score>21){
         if(player1Score>player2Score){
-        player1Won = true;
-        gameOver1 = true;
-        player2Won = false;
-        gameOver2 = true;
-        player3Won = false;
-        gameOver3 = true;
+            player1Won = true;
+            gameOver1 = true;
+            player2Won = false;
+            gameOver2 = true;
+            player3Won = false;
+            gameOver3 = true;
         }
         else if(player1Score<player2Score){
-        player1Won = false;
-        gameOver1 = true;
-        player2Won = true;
-        gameOver2 = true;
-        player3Won = false;
-        gameOver3 = true;
+            player1Won = false;
+            gameOver1 = true;
+            player2Won = true;
+            gameOver2 = true;
+            player3Won = false;
+            gameOver3 = true;
         }
         else{
             gameDraw = true;
@@ -342,22 +342,23 @@ function getCardNumericValue(deck){
             player3Won = false;
             gameOver3 = true;
         }
+    }
         if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score>21 && player3Score<=21){
             if(player1Score>player3Score){
-            player1Won = true;
-            gameOver1 = true;
-            player2Won = false;
-            gameOver2 = true;
-            player3Won = false;
-            gameOver3 = true;
+                player1Won = true;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;
             }
             else if(player1Score<player3Score){
-            player1Won = false;
-            gameOver1 = true;
-            player2Won = false;
-            gameOver2 = true;
-            player3Won = true;
-            gameOver3 = true;
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = true;
+                gameOver3 = true;
             }
             else{
                 gameDraw = true;
@@ -368,24 +369,26 @@ function getCardNumericValue(deck){
                 player3Won = false;
                 gameOver3 = true;
             }
-            if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score>21 && player2Score<=21 && player3Score<=21){
-                if(player1Score<player2Score){
+        }
+        if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score>21 && player2Score<=21 && player3Score<=21){
+            if(player1Score<player2Score){
                 player1Won = false;
                 gameOver1 = true;
                 player2Won = false;
                 gameOver2 = true;
                 player3Won = true;
                 gameOver3 = true;
-                }                
-                else{
-                    gameDraw = true;
-                    player1Won = false;
-                    gameOver1 = true;
-                    player2Won = false;
-                    gameOver2 = true;
-                    player3Won = false;
-                    gameOver3 = true;                
-                }                      
+            }                
+            else{
+                gameDraw = true;
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;                
+            }  
+        }                    
         if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score>21 && player3Score>21 && player4Score>21){
             player1Won = true;
             gameOver1 = true;
@@ -428,38 +431,6 @@ function getCardNumericValue(deck){
         }
         if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score<=21 && player3Score>21 && player4Score>21){
             if(player1Score>player2Score){
-            player1Won = true;
-            gameOver1 = true;
-            player2Won = false;
-            gameOver2 = true;
-            player3Won = false;
-            gameOver3 = true;
-            player4Won = false;
-            gameOver4 = true;
-            }
-            else if(player1Score<player2Score){
-            player1Won = false;
-            gameOver1 = true;
-            player2Won = true;
-            gameOver2 = true;
-            player3Won = false;
-            gameOver3 = true;
-            player4Won = false;
-            gameOver4 = true;
-            }
-            else{
-                gameDraw = true;
-                player1Won = false;
-                gameOver1 = true;
-                player2Won = false;
-                gameOver2 = true;
-                player3Won = false;
-                gameOver3 = true;
-                player4Won = false;
-                gameOver4 = true;
-            }
-            if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score>21 && player3Score<=21 && player4Score>21){
-                if(player1Score>player3Score){
                 player1Won = true;
                 gameOver1 = true;
                 player2Won = false;
@@ -468,81 +439,16 @@ function getCardNumericValue(deck){
                 gameOver3 = true;
                 player4Won = false;
                 gameOver4 = true;
-                }
-                else if(player1Score<player3Score){
+            }
+            else if(player1Score<player2Score){
                 player1Won = false;
                 gameOver1 = true;
-                player2Won = false;
+                player2Won = true;
                 gameOver2 = true;
-                player3Won = true;
+                player3Won = false;
                 gameOver3 = true;
                 player4Won = false;
                 gameOver4 = true;
-                }
-                else{
-                    gameDraw = true;
-                    player1Won = false;
-                    gameOver1 = true;
-                    player2Won = false;
-                    gameOver2 = true;
-                    player3Won = false;
-                    gameOver3 = true;
-                    player4Won = false;
-                    gameOver4 = true;
-                }
-                if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score>21 && player3Score>21 && player4Score<=21){
-                    if(player1Score>player4Score){
-                    player1Won = true;
-                    gameOver1 = true;
-                    player2Won = false;
-                    gameOver2 = true;
-                    player3Won = false;
-                    gameOver3 = true;
-                    player4Won = false;
-                    gameOver4 = true;
-                    }
-                    else if(player1Score<player4Score){
-                    player1Won = false;
-                    gameOver1 = true;
-                    player2Won = false;
-                    gameOver2 = true;
-                    player3Won = false;
-                    gameOver3 = true;
-                    player4Won = true;
-                    gameOver4 = true;
-                    }
-                    else{
-                        gameDraw = true;
-                        player1Won = false;
-                        gameOver1 = true;
-                        player2Won = false;
-                        gameOver2 = true;
-                        player3Won = false;
-                        gameOver3 = true;
-                        player4Won = false;
-                        gameOver4 = true;
-                    }
-        }
-        if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score>21 && player2Score<=21 && player3Score<=21 && player4Score>21){
-            if(player2Score>player3Score){
-            player1Won = false;
-            gameOver1 = true;
-            player2Won = true;
-            gameOver2 = true;
-            player3Won = false;
-            gameOver3 = true;
-            player4Won = false;
-            gameOver4 = true;
-            }
-            else if(player2Score<player3Score){
-            player1Won = false;
-            gameOver1 = true;
-            player2Won = false;
-            gameOver2 = true;
-            player3Won = true;
-            gameOver3 = true;
-            player4Won = false;
-            gameOver4 = true;
             }
             else{
                 gameDraw = true;
@@ -555,18 +461,52 @@ function getCardNumericValue(deck){
                 player4Won = false;
                 gameOver4 = true;
             }
-            if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score>21 && player2Score<=21 && player3Score>21 && player4Score<=21){
-                if(player2Score>player4Score){
-                player1Won = false;
+        }
+        if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score>21 && player3Score<=21 && player4Score>21){
+            if(player1Score>player3Score){
+                player1Won = true;
                 gameOver1 = true;
-                player2Won = true;
+                player2Won = false;
                 gameOver2 = true;
                 player3Won = false;
                 gameOver3 = true;
                 player4Won = false;
                 gameOver4 = true;
-                }
-                else if(player2Score<player4Score){
+            }
+            else if(player1Score<player3Score){
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = true;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+            else{
+                gameDraw = true;
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+        }
+        if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score>21 && player3Score>21 && player4Score<=21){
+            if(player1Score>player4Score){
+                player1Won = true;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+            else if(player1Score<player4Score){
                 player1Won = false;
                 gameOver1 = true;
                 player2Won = false;
@@ -575,6 +515,72 @@ function getCardNumericValue(deck){
                 gameOver3 = true;
                 player4Won = true;
                 gameOver4 = true;
+            }
+            else{
+                gameDraw = true;
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+        }
+        if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score>21 && player2Score<=21 && player3Score<=21 && player4Score>21){
+            if(player2Score>player3Score){
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = true;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+            else if(player2Score<player3Score){
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = true;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+            else{
+                gameDraw = true;
+                player1Won = false;
+                gameOver1 = true;
+                player2Won = false;
+                gameOver2 = true;
+                player3Won = false;
+                gameOver3 = true;
+                player4Won = false;
+                gameOver4 = true;
+            }
+        }
+        if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score>21 && player2Score<=21 && player3Score>21 && player4Score<=21){
+                if(player2Score>player4Score){
+                    player1Won = false;
+                    gameOver1 = true;
+                    player2Won = true;
+                    gameOver2 = true;
+                    player3Won = false;
+                    gameOver3 = true;
+                    player4Won = false;
+                    gameOver4 = true;
+                }
+                else if(player2Score<player4Score){
+                    player1Won = false;
+                    gameOver1 = true;
+                    player2Won = false;
+                    gameOver2 = true;
+                    player3Won = false;
+                    gameOver3 = true;
+                    player4Won = true;
+                    gameOver4 = true;
                 }
                 else{
                     gameDraw = true;
@@ -587,26 +593,27 @@ function getCardNumericValue(deck){
                     player4Won = false;
                     gameOver4 = true;
                 }
-                if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score>21 && player2Score>21 && player3Score<=21 && player4Score<=21){
+         }
+        if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score>21 && player2Score>21 && player3Score<=21 && player4Score<=21){
                     if(player3Score>player4Score){
-                    player1Won = false;
-                    gameOver1 = true;
-                    player2Won = false;
-                    gameOver2 = true;
-                    player3Won = true;
-                    gameOver3 = true;
-                    player4Won = false;
-                    gameOver4 = true;
+                        player1Won = false;
+                        gameOver1 = true;
+                        player2Won = false;
+                        gameOver2 = true;
+                        player3Won = true;
+                        gameOver3 = true;
+                        player4Won = false;
+                        gameOver4 = true;
                     }
                     else if(player3Score<player4Score){
-                    player1Won = false;
-                    gameOver1 = true;
-                    player2Won = false;
-                    gameOver2 = true;
-                    player3Won = false;
-                    gameOver3 = true;
-                    player4Won = true;
-                    gameOver4 = true;
+                        player1Won = false;
+                        gameOver1 = true;
+                        player2Won = false;
+                        gameOver2 = true;
+                        player3Won = false;
+                        gameOver3 = true;
+                        player4Won = true;
+                        gameOver4 = true;
                     }
                     else{
                         gameDraw = true;
@@ -619,6 +626,7 @@ function getCardNumericValue(deck){
                         player4Won = false;
                         gameOver4 = true;
                     }
+            }
         if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score<=21 && player3Score<=21 && player4Score>21){
             if(player1Score < player3Score && player2Score == player3Score){                
                 player1Won = false;
@@ -711,6 +719,7 @@ function getCardNumericValue(deck){
                 gameOver4 = true;
             }        
   }
+}
 
   
 
