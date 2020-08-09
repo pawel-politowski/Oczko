@@ -420,6 +420,18 @@ window.onload = function(){
                     winModalBcg.style.display = "block";
                     winModalTxt.innerText += "KOMPUTER WYGRYWA! PERSKIE OCZKO";
                 }
+
+                if(player1Score == 22 && player1Cards.length == 2 && player2Score == 22 && player2Cards.length == 2 ||
+                    player1Score == 22 && player1Cards.length == 2 && player3Score == 22 && player3Cards.length == 2 ||
+                    player1Score == 22 && player1Cards.length == 2 && player4Score == 22 && player4Cards.length == 2 ||
+                    player1Score == 22 && player1Cards.length == 2 && dealerScore == 22 && dealerCards.length == 2 ||
+                    player2Score == 22 && player2Cards.length == 2 && player3Score == 22 && player3Cards.length == 2 ||
+                    player2Score == 22 && player2Cards.length == 2 && player4Score == 22 && player4Cards.length == 2 ||
+                    player3Score == 22 && player3Cards.length == 2 && player4Score == 22 && player4Cards.length == 2) {
+                    winModal.style.display = "block";
+                    winModalBcg.style.display = "block";
+                    winModalTxt.innerText += "NIESAMOWITA SYTUACJA! DWA PERSKIE OCZKA W ROZDANIU";
+                }
                 
                 if(player1Score > 21 && player1Cards.length > 2 && !gameOver2) {
                     buttonHit1.style.display = 'none';
