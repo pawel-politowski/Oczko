@@ -52,25 +52,6 @@ let player2Score = 0;
 let player3Score = 0;
 let player4Score = 0;
 
-
-async function getDeckID() {
-    await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-    .then((response) => {
-    return response.json()
-    .then((data) => {
-        deckID = data.deck_id
-    })})
-    await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=52`)   
-    .then((response) => {
-    return response.json()
-    .then((data) => {
-        deck = data.cards
-        return deck  
-})})}
-getDeckID();      
-
-
-
 const closeModal = function() {       
     modalSection.style.display = 'none';
     modalBcg.style.display = 'none';
@@ -90,10 +71,36 @@ const openModal = function() {
     computerSection.style.display = 'flex'
 };
 
+closeModalBtns.forEach(button => {
+    button.addEventListener('click', closeModal)
+});
+numberOfPlayers.addEventListener('click', openModal);
+
+
+async function getDeckID() {
+    await fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+    .then((response) => {
+    return response.json()
+    .then((data) => {
+        deckID = data.deck_id
+    })})
+    await fetch(`https://deckofcardsapi.com/api/deck/${deckID}/draw/?count=52`)   
+    .then((response) => {
+    return response.json()
+    .then((data) => {
+        deck = data.cards
+        return deck  
+})})}
+     
+
+
+
+
+
 const onePlayer = function() {   
     playerTwoSection.style.display = 'none';
     playerThreeSection.style.display = 'none';
-    playerFourSection.style.display = 'none';
+    playerFourSection.style.display = 'none'; 
     getDeckID();
     gameStart1 = true;
     gameStartCP = true;
@@ -123,6 +130,7 @@ const twoPlayers = function() {
     player2Won = false;   
     player1Cards = [getNextCard(), getNextCard()];
     player2Cards = [getNextCard(), getNextCard()];
+    console.log(deck)
 };
 
 const threePlayers = function() { 
@@ -140,7 +148,8 @@ const threePlayers = function() {
     player3Won = false;
     player1Cards = [getNextCard(), getNextCard()];
     player2Cards = [getNextCard(), getNextCard()];
-    player3Cards = [getNextCard(), getNextCard()];    
+    player3Cards = [getNextCard(), getNextCard()];
+    console.log(deck)    
 };
 
 const fourPlayers = function() { 
@@ -159,15 +168,12 @@ const fourPlayers = function() {
     player4Won = false;
     player1Cards = [getNextCard(), getNextCard()];
     player2Cards = [getNextCard(), getNextCard()];
-    player3Cards = [getNextCard(), getNextCard()]; 
-    player3Cards = [getNextCard(), getNextCard()];
+    player3Cards = [getNextCard(), getNextCard()];   
     player4Cards = [getNextCard(), getNextCard()];  
+    console.log(deck)
 };
 
-closeModalBtns.forEach(button => {
-    button.addEventListener('click', closeModal)
-});
-numberOfPlayers.addEventListener('click', openModal);
+
 onePlayerGame.addEventListener('click', onePlayer);
 twoPlayersGame.addEventListener('click', twoPlayers);
 threePlayersGame.addEventListener('click', threePlayers);
@@ -175,22 +181,22 @@ fourPlayersGame.addEventListener('click', fourPlayers);
 
 buttonHit1.addEventListener('click', function(){
     player1Cards.push(getNextCard());
-    // checkForEndOfGame();
+    checkForEndOfGame();
     // showStatus();
 })
 buttonHit2.addEventListener('click', function(){
     player2Cards.push(getNextCard());
-    // checkForEndOfGame();
+    checkForEndOfGame();
     // showStatus();
 })
 buttonHit3.addEventListener('click', function(){
     player3Cards.push(getNextCard());
-    // checkForEndOfGame();
+    checkForEndOfGame();
     // showStatus();
 })
 buttonHit4.addEventListener('click', function(){
     player4Cards.push(getNextCard());
-    // checkForEndOfGame();
+    checkForEndOfGame();
     // showStatus();
 })
 
@@ -225,6 +231,23 @@ function getCardNumericValue(deck){
       case 'KING':
         return 4; 
     }
+}
+
+function getScore(cardArray){
+    let score = 0;    
+    for(let i=0; i<cardArray.length; i++){
+      let card = cardArray[i];
+      score += getCardNumericValue(card); 
+    }
+     return score; 
+  }
+  
+  function updateScores(){
+    dealerScore = getScore(dealerCards);
+    player1Score = getScore(player1Cards); 
+    player2Score = getScore(player2Cards); 
+    player3Score = getScore(player3Cards); 
+    player4Score = getScore(player4Cards); 
   }
 
   function checkForEndOfGame(){
