@@ -139,13 +139,114 @@ header {
     flex: 1 1 40%;
     height: 30vh;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: flex-end;
+    align-items: center;
     border: 1px solid black;    
 }
 
 .section_main-img {
-    align-self: flex-start;
+    align-self: center;
     padding: 10px 20px;
 }
+
+.section_modal-win {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 1px solid green;
+    border-radius: 5px;
+    z-index: 10;
+    background-color: white;
+    width: 800px;
+    max-width: 80%;
+    display: none;
+    height: 150px;    
+    text-align: center;
+}
+
+.modal-background2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: green;
+    opacity: .5;
+    display: none;
+}
+
+.modal-winner {
+    font-size: 2rem;
+    padding: 15px;
+}
+
+.modal_button-playAgain {
+    cursor: pointer;
+    width: 200px;
+    max-width: 20%;
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    background: green;
+    color: black;
+    transition: all .2s linear;
+}
+
+.modal_button-playAgain:hover {
+    background: black;
+    color: green;    
+}
+
+.section_buttonScore {
+    display: flex; 
+    justify-content: center;          
+}
+
+.score {
+    margin: 10px;
+    padding: 3px;    
+}
+
+.hit {
+    cursor: pointer;
+    width: 200px;
+    max-width: 20%;
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    background: green;
+    color: black;
+    transition: all .2s linear;
+    margin: 10px;
+}
+
+.hit:hover {
+    background: black;
+    color: green;
+}
+
+.stay {
+    cursor: pointer;
+    width: 200px;
+    max-width: 20%;
+    padding: 3px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    background: red;
+    color: black;
+    transition: all .2s linear;
+    margin: 10px;
+}
+
+.stay:hover {
+    background: black;
+    color: red;
+}
+
+
 

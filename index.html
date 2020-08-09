@@ -15,31 +15,41 @@
     <section class="section_main">
         <div class="section_main-player playerOneSection">
             <div class="section_main-img1"></div>
-            <button class="hit-player1">Weź kartę!</button>            
-            <button class="stay-player1">Pas</button>
-            <div class="score-player1">Wynik:</div>
+            <div class="section_buttonScore">
+                <button class="hit hit-player1">Weź kartę!</button>            
+                <button class="stay stay-player1">Pas</button>            
+                <div class="score score-player1">Wynik:</div>
+            </div>           
         </div>
         <div class="section_main-player computerSection">
             <div class="section_main-img CP"></div>
-            <div class="score-cp">Wynik:</div>
+            <div class="section_buttonScore">
+                <div class="score score-cp">Wynik:</div>
+            </div>            
         </div>
         <div class="section_main-player playerTwoSection">
             <div class="section_main-img2"></div>
-            <button class="hit-player2">Weź kartę!</button>
-            <button class="stay-player2">Pas</button>
-            <div class="score-player2">Wynik:</div>
+            <div class="section_buttonScore">
+                <button class="hit hit-player2">Weź kartę!</button>
+                <button class="stay stay-player2">Pas</button>
+                <div class="score score-player2">Wynik:</div>
+            </div>          
         </div>
         <div class="section_main-player playerThreeSection">
             <div class="section_main-img3"></div>
-            <button class="hit-player3">Weź kartę!</button>
-            <button class="stay-player3">Pas</button>
-            <div class="score-player3">Wynik:</div>
+            <div class="section_buttonScore">
+                <button class="hit hit-player3">Weź kartę!</button>
+                <button class="stay stay-player3">Pas</button>
+                <div class="score score-player3">Wynik:</div>
+            </div>           
         </div>
         <div class="section_main-player playerFourSection">
             <div class="section_main-img4"></div>
-            <button class="hit-player4">Weź kartę!</button>
-            <button class="stay-player4">Pas</button>
-            <div class="score-player4">Wynik:</div>
+            <div class="section_buttonScore">
+                <button class="hit hit-player4">Weź kartę!</button>
+                <button class="stay stay-player4">Pas</button>
+                <div class="score score-player4">Wynik:</div>
+            </div>
         </div>
     </section>
     <section class="section_modal">
@@ -63,7 +73,11 @@
         </div>   
     </section>
     <div class="modal-background"></div>
-  
+    <section class="section_modal-win">
+        <div class="modal-winner"></div>
+        <button class="modal_button-playAgain" onClick="window.location.reload();">Zagraj jeszcze raz</button>
+    </section>
+    <div class="modal-background2"></div>
     <footer>
 
     </footer>
