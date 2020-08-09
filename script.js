@@ -103,14 +103,17 @@ window.onload = function(){
                 gameOver1 = false;
                 player1Won = false;
                 dealerCards = [getNextCard(), getNextCard()];
-                player1Cards = [getNextCard(), getNextCard()];
-                showStatus();                           
+                player1Cards = [getNextCard(), getNextCard()];                
+                showStatus();      
+                console.log(deck)                     
             };
             
             const twoPlayers = function() {
                 computerSection.style.display = 'none';
                 playerThreeSection.style.display = 'none';
-                playerFourSection.style.display = 'none';              
+                playerFourSection.style.display = 'none';  
+                buttonHit2.style.display = 'none';
+                buttonStay2.style.display = 'none';                           
                 gameStart1 = true;
                 gameStart2 = true;
                 gameOver1 = false;
@@ -124,7 +127,11 @@ window.onload = function(){
             
             const threePlayers = function() { 
                 computerSection.style.display = 'none';
-                playerFourSection.style.display = 'none';               
+                playerFourSection.style.display = 'none';  
+                buttonHit2.style.display = 'none';
+                buttonStay2.style.display = 'none';
+                buttonHit3.style.display = 'none';
+                buttonStay3.style.display = 'none';             
                 gameStart1 = true;
                 gameStart2 = true;
                 gameStart3 = true;
@@ -141,7 +148,13 @@ window.onload = function(){
             };
             
             const fourPlayers = function() { 
-                computerSection.style.display = 'none';                  
+                computerSection.style.display = 'none'; 
+                buttonHit2.style.display = 'none';
+                buttonStay2.style.display = 'none';
+                buttonHit3.style.display = 'none';
+                buttonStay3.style.display = 'none';
+                buttonHit4.style.display = 'none';
+                buttonStay4.style.display = 'none';                 
                 gameStart1 = true;
                 gameStart2 = true;
                 gameStart3 = true;
@@ -190,21 +203,35 @@ window.onload = function(){
                 gameOver1 = true;
                 checkForEndOfGame();
                 showStatus();
+                buttonHit1.style.display = 'none';
+                buttonStay1.style.display = 'none';
+                buttonHit2.style.display = 'block';
+                buttonStay2.style.display = 'block';
             })
             buttonStay2.addEventListener('click', function(){
                 gameOver2 = true;
                 checkForEndOfGame();
                 showStatus();
+                buttonHit2.style.display = 'none';
+                buttonStay2.style.display = 'none';
+                buttonHit3.style.display = 'block';
+                buttonStay3.style.display = 'block';
             })
             buttonStay3.addEventListener('click', function(){
                 gameOver3 = true;
                 checkForEndOfGame();
                 showStatus();
+                buttonHit3.style.display = 'none';
+                buttonStay3.style.display = 'none';
+                buttonHit4.style.display = 'block';
+                buttonStay4.style.display = 'block';
             })
             buttonStay4.addEventListener('click', function(){
                 gameOver4 = true;
                 checkForEndOfGame();
                 showStatus();
+                buttonHit4.style.display = 'none';
+                buttonStay4.style.display = 'none';
             })
             
             function getNextCard() {
@@ -256,7 +283,7 @@ window.onload = function(){
                 player1Score = getScore(player1Cards); 
                 player2Score = getScore(player2Cards); 
                 player3Score = getScore(player3Cards); 
-                player4Score = getScore(player4Cards);                 
+                player4Score = getScore(player4Cards);                         
               }
               
 
@@ -303,8 +330,8 @@ window.onload = function(){
                     score2.innerText = `Wynik: ${player2Score}`
                     score3.innerText = `Wynik: ${player3Score}`
                     score4.innerText = `Wynik: ${player4Score}`
-                    scoreCp.innerText = `Wynik: ${dealerScore}`
-                                            
+                    scoreCp.innerText = `Wynik: ${dealerScore}`                  
+                                                                                
                     if(gameStart1 && gameStartCP && gameOver1){
                         winModal.style.display = "block";
                         winModalBcg.style.display = "block";
@@ -363,11 +390,58 @@ window.onload = function(){
                         winModalTxt.innerText += "REMIS!";
                         }                      
                     }
-                }
-            
-              function checkForEndOfGame(){
+                }             
+                   
+              function checkForEndOfGame(){                
                 updateScores();
+
+                if(player1Score == 22 && player1Cards.length == 2 ) {
+                    winModal.style.display = "block";
+                    winModalBcg.style.display = "block";
+                    winModalTxt.innerText += "BRAWO! ZAWODNIK 1 ZDOBYWA PERSKIE OCZKO";
+                } 
+                if(player2Score == 22 && player2Cards.length == 2 ) {
+                    winModal.style.display = "block";
+                    winModalBcg.style.display = "block";
+                    winModalTxt.innerText += "BRAWO! ZAWODNIK 2 ZDOBYWA PERSKIE OCZKO";
+                } 
+                if(player3Score == 22 && player3Cards.length == 2 ) {
+                    winModal.style.display = "block";
+                    winModalBcg.style.display = "block";
+                    winModalTxt.innerText += "BRAWO! ZAWODNIK 3 ZDOBYWA PERSKIE OCZKO";
+                } 
+                if(player4Score == 22 && player4Cards.length == 2 ) {
+                    winModal.style.display = "block";
+                    winModalBcg.style.display = "block";
+                    winModalTxt.innerText += "BRAWO! ZAWODNIK 4 ZDOBYWA PERSKIE OCZKO";
+                } 
+                if(dealerScore == 22 && dealerCards.length == 2 ) {
+                    winModal.style.display = "block";
+                    winModalBcg.style.display = "block";
+                    winModalTxt.innerText += "KOMPUTER WYGRYWA! PERSKIE OCZKO";
+                }
                 
+                if(player1Score > 21 && player1Cards.length > 2 && !gameOver2) {
+                    buttonHit1.style.display = 'none';
+                    buttonStay1.style.display = 'none';
+                    buttonHit2.style.display = 'block';
+                    buttonStay2.style.display = 'block';
+                }
+
+                if(player2Score > 21 && player2Cards.length > 2) {
+                    buttonHit2.style.display = 'none';
+                    buttonStay2.style.display = 'none';
+                    buttonHit3.style.display = 'block';
+                    buttonStay3.style.display = 'block';
+                }
+
+                if(player3Score > 21 && player3Cards.length > 2) {
+                    buttonHit3.style.display = 'none';
+                    buttonStay3.style.display = 'none';
+                    buttonHit4.style.display = 'block';
+                    buttonStay4.style.display = 'block';
+                }
+                                
                 if(gameOver1 && gameStart1 && gameStartCP){
                   while(dealerScore<player1Score &&
                         player1Score <=21 &&
@@ -412,6 +486,10 @@ window.onload = function(){
                     player1Won = false;                    
                     player2Won = true;                    
                    }
+                   else if(player1Score > player2Score){
+                    player1Won = true;                    
+                    player2Won = false;                    
+                   }
                    else {
                     gameDraw = true;
                     player1Won = false;
@@ -445,8 +523,7 @@ window.onload = function(){
                     gameOver1 = true;
                     player2Won = false;
                     gameOver2 = true;
-                    player3Won = true;
-                    gameOver3 = true;
+                    player3Won = true;                    
                 }
                 if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score<=21 && player3Score>21){
                     if(player1Score>player2Score){
@@ -491,12 +568,18 @@ window.onload = function(){
                         }
                     }
                     if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score>21 && player2Score<=21 && player3Score<=21){
-                        if(player1Score<player2Score){
+                        if(player2Score<player3Score){
                             player1Won = false;
                             gameOver1 = true;
                             player2Won = false;                            
                             player3Won = true;                       
-                        }                
+                        } 
+                        else if(player2Score>player3Score){
+                            player1Won = false;
+                            gameOver1 = true;
+                            player2Won = true;                            
+                            player3Won = false;                       
+                        }               
                         else{
                             gameDraw = true;
                             player1Won = false;
@@ -504,7 +587,29 @@ window.onload = function(){
                             player2Won = false;                        
                             player3Won = false;                                  
                         }  
-                    }                    
+                    } 
+                    if(gameStart1 && gameStart2 && gameStart3 && !gameStart4 && player1Score<=21 && player2Score<=21 && player3Score<=21){
+                        if(player1Score>player2Score && player1Score > player3Score){
+                            player1Won = true; 
+                            player2Won = false;   
+                            player3Won = false;                        
+                        }
+                        else if(player2Score>player1Score && player2Score > player3Score){
+                            player2Won = true; 
+                            player1Won = false;
+                            player3Won = false; 
+
+                        }
+                        else if(player3Score>player1Score && player3Score > player2Score){
+                            player3Won = true; 
+                            player1Won = false;
+                            player2Won = false;                           
+                        }
+                        else{
+                            gameDraw = true;
+                        }
+                    }
+                    
                     if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score>21 && player3Score>21 && player4Score>21){
                         player1Won = true;                       
                         player2Won = false;
@@ -705,10 +810,24 @@ window.onload = function(){
                                 }
                         }
                     if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score<=21 && player3Score<=21 && player4Score>21){
-                        if(player1Score < player3Score && player2Score == player3Score){                
+                        if(player1Score < player3Score && player2Score < player3Score){                
                             player1Won = false;                           
                             player2Won = false;                           
                             player3Won = true;                           
+                            player4Won = false;
+                            gameOver4 = true;
+                        }
+                        else if(player1Score < player2Score && player3Score < player2Score){                
+                            player1Won = false;                           
+                            player2Won = true;                           
+                            player3Won = false;                           
+                            player4Won = false;
+                            gameOver4 = true;
+                        }
+                        else if(player2Score < player1Score && player3Score < player1Score){                
+                            player1Won = true;                           
+                            player2Won = false;                           
+                            player3Won = false;                           
                             player4Won = false;
                             gameOver4 = true;
                         }
@@ -722,12 +841,26 @@ window.onload = function(){
                         }
                     }
                     if(gameStart1 && gameStart2 && gameStart3 && gameStart4 && player1Score<=21 && player2Score<=21 && player3Score>21 && player4Score<=21){
-                        if(player1Score<player4Scor && player2Score<player4Score){                
+                        if(player1Score<player4Score && player2Score<player4Score){                
                             player1Won = false;                            
                             player2Won = false;                            
                             player3Won = false;
                             gameOver3 = true;
                             player4Won = true;                            
+                        }
+                        else if(player1Score<player2Score && player4Score<player2Score){                
+                            player1Won = false;                            
+                            player2Won = true;                            
+                            player3Won = false;
+                            gameOver3 = true;
+                            player4Won = false;                            
+                        }
+                        else if(player2Score<player1Score && player4Score<player1Score){                
+                            player1Won = true;                            
+                            player2Won = false;                            
+                            player3Won = false;
+                            gameOver3 = true;
+                            player4Won = false;                            
                         }
                         else{
                             gameDraw = true;
@@ -746,6 +879,20 @@ window.onload = function(){
                             player3Won = false;                            
                             player4Won = true;                           
                         }
+                        else if(player2Score < player3Score && player4Score < player3Score){               
+                            player1Won = false;
+                            gameOver1 = true;
+                            player2Won = false;                            
+                            player3Won = true;                            
+                            player4Won = false;                           
+                        }
+                        else if(player3Score < player2Score && player4Score < player2Score){               
+                            player1Won = false;
+                            gameOver1 = true;
+                            player2Won = true;                            
+                            player3Won = false;                            
+                            player4Won = false;                           
+                        }
                         else{
                             gameDraw = true;
                             player1Won = false;
@@ -761,6 +908,24 @@ window.onload = function(){
                             player2Won = false;                           
                             player3Won = false;                            
                             player4Won = true;                         
+                        }
+                        else if(player1Score < player3Score && player2Score < player3Score && player4Score < player3Score){
+                            player1Won = false;                            
+                            player2Won = false;                           
+                            player3Won = true;                            
+                            player4Won = false;                         
+                        }
+                        else if(player1Score < player2Score && player3Score < player2Score && player4Score < player2Score){
+                            player1Won = false;                            
+                            player2Won = true;                           
+                            player3Won = false;                            
+                            player4Won = false;                         
+                        }
+                        else if(player2Score < player1Score && player3Score < player1Score && player4Score < player1Score){
+                            player1Won = true;                            
+                            player2Won = false;                           
+                            player3Won = false;                            
+                            player4Won = false;                         
                         }
                         else{
                             gameDraw = true;
